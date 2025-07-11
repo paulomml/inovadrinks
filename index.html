@@ -1,206 +1,725 @@
+<!-- ============================= -->
+<!-- Documento HTML Principal      -->
+<!-- ============================= -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <!-- Metadados da Página -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inova Drinks</title>
+
+  <!-- Links para folhas de estilo e scripts externos -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap JS Bundle (inclui Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome para ícones -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ============================= -->
+  <!-- Estilos CSS Personalizados    -->
+  <!-- ============================= -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    /* Definição de variáveis CSS para cores e sombras */
+    :root {
+      --primary-pink: #FF69B4;
+      --secondary-pink: #FFB6C1;
+      --light-pink: #FFF0F5;
+      --dark-pink: #FF1493;
+      --purple: #3D003D;
+      --gradient-1: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+      --gradient-2: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+      --shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+      --shadow-hover: 0 15px 40px rgba(255, 105, 180, 0.4);
+    }
+
+    /* Reset de margem e padding padrão */
+    * {
       margin: 0;
-      color: #3D003D;
-      background-image: url('21bf4899-8bf9-408d-a769-d53967229f7c.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-      background-attachment: fixed;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    header {
-      position: relative;
-      height: 120px;
-      background-color: #FFF0F5cc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 100px;
+    /* Estilos globais do corpo da página */
+    body {
+      background: linear-gradient(135deg, #FFF0F5 0%, #FFE4F1 100%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      color: var(--purple);
+      overflow-x: hidden;
     }
 
-    .logo-esquerda, .logo-direita {
-      position: absolute;
-      top: 10px;
-      height: 100px;
-      border-radius: 50%;
-      border: 2px solid #FF69B4;
+    /* Padrão de fundo animado para o corpo da página */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23FF69B4" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
+      pointer-events: none;
+      z-index: -1;
     }
 
-    .logo-esquerda {
-      left: 10px;
-    }
-
-    .logo-direita {
-      right: 10px;
-    }
-
-    .botoes-header {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .botoes-header button {
-      background-color: #FF69B4;
-      color: white;
-      border: none;
-      padding: 18px 33px;
-      border-radius: 5px;
-      font-size: 20px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 30px;
-    }
-
-    h2 {
-      color: #3D003D;
-      background-color: #FF69B4;
-      text-align: center;
-      padding: 15px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .cardapio, .colaboradores {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .item, .colaborador {
-      background-color: #FFE4F1cc;
-      border: 2px solid #FF69B4;
-      border-radius: 10px;
-      padding: 20px;
-      width: 250px;
-      text-align: center;
-    }
-
-    .item h3, .colaborador h3 {
-      color: #3D003D;
-    }
-
-    .colaborador img {
+    /* Estilos para o logo */
+    .logo {
       width: 100px;
       height: 100px;
-      object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 10px;
-      border: 2px solid #FF69B4;
+      object-fit: cover;
+      border: 4px solid var(--primary-pink);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
     }
 
-    footer {
-      background-color: #FF69B4;
-      color: #3D003D;
+    .logo:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    /* Estilos para o cabeçalho */
+    header {
+      background: var(--gradient-1);
+      padding: 2rem 0;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animação de fundo para o cabeçalho */
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Keyframes para a animação de flutuação */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Estilos para os botões de navegação */
+    .nav-btn {
+      background: var(--gradient-2);
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Efeito de brilho nos botões de navegação */
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .nav-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Estilos para títulos de seção */
+    .section-title {
+      background: var(--gradient-1);
+      color: white;
+      padding: 2rem;
+      border-radius: 25px;
       text-align: center;
-      padding: 15px;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-      }
+    /* Animação de brilho para títulos de seção */
+    .section-title::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
 
-      .logo-esquerda, .logo-direita {
-        position: static;
-        margin: 10px auto;
-        display: block;
-      }
+    /* Keyframes para a animação de brilho */
+    @keyframes shimmer {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(180deg); }
+    }
 
-      .botoes-header {
-        flex-direction: column;
-        align-items: center;
-      }
+    /* Layout de grid para produtos */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
 
-      .botoes-header button {
-        width: 80%;
-        max-width: 300px;
-      }
+    /* Estilos para os cartões de produto */
+    .product-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--secondary-pink);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
 
-      .item {
-        width: 90%;
+    /* Efeito de hover para os cartões de produto */
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .product-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary-pink);
+    }
+
+    .product-card:active {
+      transform: translateY(-5px) scale(1.01);
+    }
+
+    /* Estilos para o badge de categoria */
+    .category-badge {
+      background: var(--gradient-1);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    }
+
+    /* Estilos para o título do produto */
+    .product-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--purple);
+      margin: 1rem 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Estilos para a descrição do produto */
+    .product-description {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* Estilos para o ícone do produto */
+    .product-icon {
+      font-size: 2.5rem;
+      color: var(--primary-pink);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    /* Estilos para o conteúdo do modal */
+    .modal-content {
+      border-radius: 25px;
+      border: none;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    /* Estilos para o cabeçalho do modal */
+    .modal-header {
+      background: var(--gradient-1);
+      border: none;
+      padding: 2rem;
+    }
+
+    /* Estilos para o título do modal */
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center; /* Centraliza o título do modal */
+    }
+
+    /* Estilos para o corpo do modal */
+    .modal-body {
+      padding: 3rem;
+      background: linear-gradient(135deg, #FFF0F5 0%, white 100%);
+    }
+
+    /* Estilos para a descrição do modal */
+    .modal-description {
+      font-size: 1.3rem;
+      color: var(--purple);
+      line-height: 1.8;
+    }
+
+    /* Estilos para o botão de fechar do modal */
+    .btn-close {
+      background: white;
+      border-radius: 50%;
+      opacity: 1;
+      font-size: 1.2rem;
+    }
+
+    /* Estilos para o botão de fechar personalizado */
+    .close-btn {
+      background: linear-gradient(45deg, #FF69B4, #FF1493); /* Um gradiente mais vibrante */
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Estilos para o rodapé */
+    footer {
+      background: var(--gradient-1);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    /* Animações de entrada */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* Keyframes para a animação de fade-in-up */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 480px) {
-      .item {
-        width: 100%;
-      }
+    /* ============================= */
+    /* ============================= */
+    /* Media Queries Responsivas     */
+    /* ============================= */
 
-      .botoes-header button {
-        font-size: 18px;
-        padding: 15px 25px;
+    /* Ajustes responsivos para tablets */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
       }
+      
+      .product-card {
+        padding: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
 
-      h2 {
-        font-size: 22px;
+    /* Ajustes responsivos para dispositivos móveis */
+    @media (max-width: 767px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
       }
+      
+      .product-card {
+        padding: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+        padding: 1.5rem;
+      }
+    }
+
+    /* Otimizações para tablets em modo retrato */
+    @media (orientation: portrait) and (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      
+      .product-card {
+        min-height: 250px;
+      }
+      
+      .nav-btn {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Otimizações para dispositivos de toque */
+    @media (hover: none) and (pointer: coarse) {
+      .product-card:hover {
+        transform: none;
+      }
+      
+      .product-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+      }
+    }
+
+    /* Animação de pulso para elementos interativos */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4); }
+      70% { box-shadow: 0 0 0 20px rgba(255, 105, 180, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); }
+    }
+
+    .nav-btn, .product-card {
+      animation: pulse 2s infinite;
+    }
+
+    .nav-btn:hover, .product-card:hover {
+      animation: none;
     }
   </style>
 </head>
 <body>
+
+  <!-- ============================= -->
+  <!-- Seção: Cabeçalho Principal    -->
+  <!-- ============================= -->
   <header>
-    <img class="logo-esquerda" src="logo.jpg.jpg" alt="Logo Inova Drinks">
-    <img class="logo-direita" src="logo.jpg.XV.png" alt="Logo Dos XV">
-  
-    <div class="botoes-header">
-      <button onclick="scrollToSection('Menu')">Menu</button>
-      <button onclick="scrollToSection('Estação Gin')">Estação Gin</button>
+    <div class="container">
+      <div class="row justify-content-center align-items-center g-4">
+        <div class="col-auto">
+          <!-- Logo Inova Drinks -->
+          <img src="logo.jpg.jpg" alt="Logo Inova Drinks" class="logo">
+        </div>
+        <div class="col-auto d-flex flex-column gap-3">
+          <!-- Botão para rolar para a seção Menu Completo -->
+          <button class="nav-btn" onclick="scrollToSection('Menu')">
+            <i class="fas fa-cocktail me-2"></i>Menu Completo
+          </button>
+          <!-- Botão para rolar para a seção Estação Gin -->
+          <button class="nav-btn" onclick="scrollToSection('EstacaoGin')">
+            <i class="fas fa-wine-glass me-2"></i>Estação Gin
+          </button>
+        </div>
+        <div class="col-auto">
+          <!-- Logo Dos XV -->
+          <img src="logo.jpg.XV.png" alt="Logo Dos XV" class="logo">
+        </div>
+      </div>
     </div>
   </header>
 
-  <section id="Menu">
-    <h2>Menu - Rafaela XV</h2>
-    <div class="cardapio">
-      <div class="item"><h3>CAIPIROSKAS</h3><p>Vodka-morango-limão-açúcar</p></div>
-      <div class="item"><h3>CAIPIFRUTAS</h3><p>Vodka-maracujá-abacaxi-limão morango-açúcar</p></div>
-      <div class="item"><h3>CAIPIRINHA</h3><p>Cachaça-limão-açúcar</p></div>
-      <div class="item"><h3>BLUE LAGOON</h3><p>Vodka-Licor de curaçau-Limão-Sprite-Açúcar</p></div>
-      <div class="item"><h3>DOCURA DE KIWI</h3><p>Vodka-kiwi-abacaxi</p></div>
-      <div class="item"><h3>SEX ON THE BEACH</h3><p>Vodka-licor de pêssego-suco de laranja-groselha</p></div>
-      <div class="item"><h3>MOSCOW MULE</h3><p>Vodka-limão-açúcar-xarope de gengibre-espuma</p></div>
-      <div class="item"><h3>SUBLIME</h3><p>Morango-Abacaxi-Leite condensado-Creme de leite (com ou sem álcool)</p></div>
-    </div>
-  </section>
+  <!-- ============================= -->
+  <!-- Seção: Conteúdo Principal     -->
+  <!-- ============================= -->
+  <main class="container py-5">
 
-  <section id="Estação Gin">
-    <h2>Estação Gin</h2>
-    <div class="cardapio">
-      <div class="item"><h3>GIN TROPICAL</h3><p>Gin-citrus-morango-tangerina</p></div>
-      <div class="item"><h3>GIN CLÁSSICO</h3><p>Gin-água tônica-limão</p></div>
-      <div class="item"><h3>APPLE GIN</h3><p>Gin-citrus-xarope de maçã verde</p></div>
-      <div class="item"><h3>GIN COM MORANGO</h3><p>Gin-água tônica-xarope de morango</p></div>
-    </div>
-  </section>
+    <!-- ============================= -->
+    <!-- Seção: Menu Rafaela XV        -->
+    <!-- ============================= -->
+    <section id="Menu" class="fade-in-up">
+      <h2 class="section-title">
+        <i class="fas fa-cocktail me-3"></i>Menu Rafaela XV
+      </h2>
+      <!-- Grid de produtos para o menu -->
+      <div class="product-grid">
+        <!-- Cartão de produto: CAIPIROSKAS -->
+        <div class="product-card" onclick="openProductDetailModal('CAIPIROSKAS', 'Uma explosão de sabores com vodka premium, morangos frescos, limão siciliano e açúcar cristal. O equilíbrio perfeito entre doce e cítrico.', 'fas fa-strawberry')">
+          <i class="fas fa-cocktail product-icon"></i>
+          <div class="category-badge">Coquetéis Clássicos</div>
+          <h3 class="product-title">CAIPIROSKAS</h3>
+          <p class="product-description">Vodka • Morango • Limão • Açúcar</p>
+        </div>
 
+        <!-- Cartão de produto: CAIPIFRUTAS -->
+        <div class="product-card" onclick="openProductDetailModal('CAIPIFRUTAS', 'Festival tropical com vodka, maracujá, abacaxi suculento, limão, morango e açúcar. Uma explosão de sabores tropicais em cada gole.', 'fas fa-pineapple')">
+          <i class="fas fa-leaf product-icon"></i>
+          <div class="category-badge">Coquetéis de Frutas</div>
+          <h3 class="product-title">CAIPIFRUTAS</h3>
+          <p class="product-description">Vodka • Maracujá • Abacaxi • Limão • Morango • Açúcar</p>
+        </div>
+
+        <!-- Cartão de produto: CAIPIRINHA -->
+        <div class="product-card" onclick="openProductDetailModal('CAIPIRINHA', 'O clássico brasileiro com cachaça artesanal, limão tahiti fresquinho e açúcar. Tradição e sabor em cada gole.', 'fas fa-lemon')">
+          <i class="fas fa-cocktail product-icon"></i>
+          <div class="category-badge">Coquetéis Clássicos</div>
+          <h3 class="product-title">CAIPIRINHA</h3>
+          <p class="product-description">Cachaça • Limão • Açúcar</p>
+        </div>
+
+        <!-- Cartão de produto: BLUE LAGOON -->
+        <div class="product-card" onclick="openProductDetailModal('BLUE LAGOON', 'Drink exótico com vodka, licor de curaçau azul, limão, Sprite e açúcar. Visual impressionante e sabor único.', 'fas fa-water')">
+          <i class="fas fa-tint product-icon"></i>
+          <div class="category-badge">Coquetéis Especiais</div>
+          <h3 class="product-title">BLUE LAGOON</h3>
+          <p class="product-description">Vodka • Licor de Curaçau • Limão • Sprite • Açúcar</p>
+        </div>
+
+        <!-- Cartão de produto: DOCURA DE KIWI -->
+        <div class="product-card" onclick="openProductDetailModal('DOCURA DE KIWI', 'Combinação exótica com vodka, kiwi fresco e abacaxi. Uma doçura tropical irresistível.', 'fas fa-kiwi-bird')">
+          <i class="fas fa-apple-alt product-icon"></i>
+          <div class="category-badge">Coquetéis de Frutas</div>
+          <h3 class="product-title">DOCURA DE KIWI</h3>
+          <p class="product-description">Vodka • Kiwi • Abacaxi</p>
+        </div>
+
+        <!-- Cartão de produto: SEX ON THE BEACH -->
+        <div class="product-card" onclick="openProductDetailModal('SEX ON THE BEACH', 'O clássico internacional com vodka, licor de pêssego, suco de laranja natural e groselha. Prazer em cada gole.', 'fas fa-umbrella-beach')">
+          <i class="fas fa-cocktail product-icon"></i>
+          <div class="category-badge">Coquetéis Clássicos</div>
+          <h3 class="product-title">SEX ON THE BEACH</h3>
+          <p class="product-description">Vodka • Licor de Pêssego • Suco de Laranja • Groselha</p>
+        </div>
+
+        <!-- Cartão de produto: MOSCOW MULE -->
+        <div class="product-card" onclick="openProductDetailModal('MOSCOW MULE', 'Drink sofisticado com vodka, limão, açúcar, xarope de gengibre e espuma cremosa. Sabor picante e refrescante.', 'fas fa-fire')">
+          <i class="fas fa-mug-hot product-icon"></i>
+          <div class="category-badge">Coquetéis Especiais</div>
+          <h3 class="product-title">MOSCOW MULE</h3>
+          <p class="product-description">Vodka • Limão • Açúcar • Xarope de Gengibre • Espuma</p>
+        </div>
+
+        <!-- Cartão de produto: SUBLIME -->
+        <div class="product-card" onclick="openProductDetailModal('SUBLIME', 'Drink cremoso e delicioso com morango, abacaxi, leite condensado e creme de leite. Disponível com ou sem álcool.', 'fas fa-heart')">
+          <i class="fas fa-ice-cream product-icon"></i>
+          <div class="category-badge">Coquetéis Sem Álcool</div>
+          <h3 class="product-title">SUBLIME</h3>
+          <p class="product-description">Morango • Abacaxi • Leite Condensado • Creme de Leite</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- Seção: Estação Gin            -->
+    <!-- ============================= -->
+    <section id="EstacaoGin" class="mt-5 fade-in-up">
+      <h2 class="section-title">
+        <i class="fas fa-wine-glass me-3"></i>Estação Gin
+      </h2>
+      <!-- Grid de produtos para a estação Gin -->
+      <div class="product-grid">
+        <!-- Cartão de produto: GIN TROPICAL -->
+        <div class="product-card" onclick="openProductDetailModal('GIN TROPICAL', 'Gin premium com mix de citrus, morango fresco e tangerina. Uma explosão tropical de sabores únicos.', 'fas fa-seedling')">
+          <i class="fas fa-wine-glass product-icon"></i>
+          <div class="category-badge">Gins Especiais</div>
+          <h3 class="product-title">GIN TROPICAL</h3>
+          <p class="product-description">Gin • Citrus • Morango • Tangerina</p>
+        </div>
+
+        <!-- Cartão de produto: GIN CLÁSSICO -->
+        <div class="product-card" onclick="openProductDetailModal('GIN CLÁSSICO', 'O gin tradicional com água tônica premium e limão. Clássico elegante e sofisticado.', 'fas fa-glass-martini')">
+          <i class="fas fa-cocktail product-icon"></i>
+          <div class="category-badge">Gins Clássicos</div>
+          <h3 class="product-title">GIN CLÁSSICO</h3>
+          <p class="product-description">Gin • Água Tônica • Limão</p>
+        </div>
+
+        <!-- Cartão de produto: APPLE GIN -->
+        <div class="product-card" onclick="openProductDetailModal('APPLE GIN', 'Gin especial com citrus e xarope de maçã verde. Sabor fresco e levemente doce.', 'fas fa-apple-alt')">
+          <i class="fas fa-wine-glass product-icon"></i>
+          <div class="category-badge">Gins Especiais</div>
+          <h3 class="product-title">APPLE GIN</h3>
+          <p class="product-description">Gin • Citrus • Xarope de Maçã Verde</p>
+        </div>
+
+        <!-- Cartão de produto: GIN COM MORANGO -->
+        <div class="product-card" onclick="openProductDetailModal('GIN COM MORANGO', 'Gin com água tônica e xarope de morango. Doçura natural e sabor marcante.', 'fas fa-strawberry')">
+          <i class="fas fa-wine-glass product-icon"></i>
+          <div class="category-badge">Gins de Frutas</div>
+          <h3 class="product-title">GIN COM MORANGO</h3>
+          <p class="product-description">Gin • Água Tônica • Xarope de Morango</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= -->
+  <!-- Seção: Rodapé                 -->
+  <!-- ============================= -->
   <footer>
-    <p>&copy; 2025 Inova Drinks - Todos os direitos reservados</p>
+    <div class="container">
+      <p><i class="fas fa-cocktail me-2"></i>&copy; 2025 Inova Drinks - Todos os direitos reservados</p>
+      <p class="mt-2"><i class="fas fa-heart me-2"></i>Feito com amor por @paulo.mml</p>
+    </div>
   </footer>
 
+  <!-- ============================= -->
+  <!-- Modal Bootstrap para Detalhes do Produto -->
+  <!-- ============================= -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <h5 class="modal-title" id="productModalLabel">
+            <i id="modalIcon" class="fas fa-cocktail me-3"></i>
+            <span id="modalProductTitle"></span>
+          </h5>
+        </div>
+        <div class="modal-body text-center">
+          <p id="modalProductDescription" class="modal-description"></p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="close-btn" data-bs-dismiss="modal">
+            <i class="fas fa-times me-2"></i>Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- Scripts JavaScript Personalizados -->
+  <!-- ============================= -->
   <script>
+    // Função para rolagem suave para seções específicas
     function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
     }
+
+    // Função para abrir o modal de detalhes do produto
+    function openProductDetailModal(title, description, iconClass = 'fas fa-cocktail') {
+      document.getElementById('modalProductTitle').innerText = title;
+      document.getElementById('modalProductDescription').innerText = description;
+      document.getElementById('modalIcon').className = iconClass + ' me-3';
+      
+      const modal = new bootstrap.Modal(document.getElementById('productModal'));
+      modal.show();
+      
+      // Adiciona animação de entrada ao conteúdo do modal
+      setTimeout(() => {
+        document.querySelector('.modal-content').style.animation = 'slideInUp 0.5s ease';
+      }, 100);
+    }
+
+    // Opções para o Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    // Cria uma nova instância do Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = '0.2s';
+          entry.target.classList.add('fade-in-up');
+        }
+      });
+    }, observerOptions);
+
+    // Observa todas as seções para aplicar animações de fade-in
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+
+    // Feedback de toque para dispositivos móveis (efeito de escala ao tocar)
+    document.addEventListener('touchstart', (e) => {
+      if (e.target.closest('.product-card')) {
+        e.target.closest('.product-card').style.transform = 'scale(0.98)';
+      }
+    });
+
+    document.addEventListener('touchend', (e) => {
+      if (e.target.closest('.product-card')) {
+        setTimeout(() => {
+          e.target.closest('.product-card').style.transform = '';
+        }, 150);
+      }
+    });
+
+    // Adiciona keyframes para a animação slideInUp dinamicamente
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
+
 </body>
 </html>
