@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inova Drinks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #3D003D;
+      background-image: url('21bf4899-8bf9-408d-a769-d53967229f7c.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+    }
+
+    header {
+      position: relative;
+      height: 120px;
+      background-color: #FFF0F5cc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 100px;
+    }
+
+    .logo-esquerda, .logo-direita {
+      position: absolute;
+      top: 10px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #FF69B4;
+    }
+
+    .logo-esquerda {
+      left: 10px;
+    }
+
+    .logo-direita {
+      right: 10px;
+    }
+
+    .botoes-header {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .botoes-header button {
+      background-color: #FF69B4;
+      color: white;
+      border: none;
+      padding: 18px 33px;
+      border-radius: 5px;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 30px;
+    }
+
+    h2 {
+      color: #3D003D;
+      background-color: #FF69B4;
+      text-align: center;
+      padding: 15px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .cardapio, .colaboradores {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .item, .colaborador {
+      background-color: #FFE4F1cc;
+      border: 2px solid #FF69B4;
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+    }
+
+    .item h3, .colaborador h3 {
+      color: #3D003D;
+    }
+
+    .colaborador img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 2px solid #FF69B4;
+    }
+
+    footer {
+      background-color: #FF69B4;
+      color: #3D003D;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+      }
+
+      .logo-esquerda, .logo-direita {
+        position: static;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .botoes-header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .botoes-header button {
+        width: 80%;
+        max-width: 300px;
+      }
+
+      .item {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .item {
+        width: 100%;
+      }
+
+      .botoes-header button {
+        font-size: 18px;
+        padding: 15px 25px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo-esquerda" src="c:/Users/paulo/OneDrive/Desktop/inova-drinks-site/logo.jpg.jpg" alt="Logo Inova Drinks">
+    <img class="logo-direita" src="c:/Users/paulo/OneDrive/Desktop/inova-drinks-site/logo.jpg.XV.png" alt="Logo Dos XV">
+  
+    <div class="botoes-header">
+      <button onclick="scrollToSection('Menu')">Menu</button>
+      <button onclick="scrollToSection('Estação Gin')">Estação Gin</button>
+    </div>
+  </header>
+
+  <section id="Menu">
+    <h2>Menu - Rafaela XV</h2>
+    <div class="cardapio">
+      <div class="item"><h3>CAIPIROSKAS</h3><p>Vodka-morango-limão-açúcar</p></div>
+      <div class="item"><h3>CAIPIFRUTAS</h3><p>Vodka-maracujá-abacaxi-limão morango-açúcar</p></div>
+      <div class="item"><h3>CAIPIRINHA</h3><p>Cachaça-limão-açúcar</p></div>
+      <div class="item"><h3>BLUE LAGOON</h3><p>Vodka-Licor de curaçau-Limão-Sprite-Açúcar</p></div>
+      <div class="item"><h3>DOCURA DE KIWI</h3><p>Vodka-kiwi-abacaxi</p></div>
+      <div class="item"><h3>SEX ON THE BEACH</h3><p>Vodka-licor de pêssego-suco de laranja-groselha</p></div>
+      <div class="item"><h3>MOSCOW MULE</h3><p>Vodka-limão-açúcar-xarope de gengibre-espuma</p></div>
+      <div class="item"><h3>SUBLIME</h3><p>Morango-Abacaxi-Leite condensado-Creme de leite (com ou sem álcool)</p></div>
+    </div>
+  </section>
+
+  <section id="Estação Gin">
+    <h2>Estação Gin</h2>
+    <div class="cardapio">
+      <div class="item"><h3>GIN TROPICAL</h3><p>Gin-citrus-morango-tangerina</p></div>
+      <div class="item"><h3>GIN CLÁSSICO</h3><p>Gin-água tônica-limão</p></div>
+      <div class="item"><h3>APPLE GIN</h3><p>Gin-citrus-xarope de maçã verde</p></div>
+      <div class="item"><h3>GIN COM MORANGO</h3><p>Gin-água tônica-xarope de morango</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Inova Drinks - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
